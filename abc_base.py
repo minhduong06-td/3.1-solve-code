@@ -5,14 +5,11 @@ import numpy as np
 
 Array = np.ndarray
 
-
 @dataclass
 class ABCResult:
-    """Result container for the ABC run."""
     x_best: Array
     f_best: float
-    history: Dict[str, Any] 
-
+    history: Dict[str, Any]
 
 class ArtificialBeeColony:
     def __init__(
@@ -27,7 +24,7 @@ class ArtificialBeeColony:
         self.f = obj_func
         self.lower = np.array(bounds[0], dtype=float)
         self.upper = np.array(bounds[1], dtype=float)
-        assert self.lower.shape == self.upper.shape, "lower/upper must have same shape"
+        assert self.lower.shape == self.upper.shape
         self.d = int(self.lower.size)
         self.sn = int(sn)
         self.limit = int(limit)
@@ -38,8 +35,8 @@ class ArtificialBeeColony:
         self.fvals = np.empty(self.sn, dtype=float)
         self.fits = np.empty(self.sn, dtype=float)
         self.trials = np.zeros(self.sn, dtype=int)
-        self.best_x: Optional[Array] = None
-        self.best_f: float = float("inf")
+        self.best_x = None
+        self.best_f = float("inf")
 
     @staticmethod
     def _fitness_from_objective(fx: float) -> float:
@@ -71,19 +68,17 @@ class ArtificialBeeColony:
         k = i
         while k == i:
             k = int(self.rng.integers(0, self.sn))
-        # choose random dimension
         j = int(self.rng.integers(0, self.d))
         phi = self.rng.uniform(-1.0, 1.0)
-
         v = self.X[i].copy()
         v[j] = self.X[i, j] + phi * (self.X[i, j] - self.X[k, j])
         return self._boundary_clip(v)
-
+    
     def _employed_phase(self):
         for i in range(self.sn):
             v = self._neighbor_one_dim(i)
             fv = float(self.f(v))
-            if fv <= self.fvals[i]: 
+            if fv <= self.fvals[i]:
                 self.X[i] = v
                 self.fvals[i] = fv
                 self.fits[i] = self._fitness_from_objective(fv)
@@ -120,8 +115,8 @@ class ArtificialBeeColony:
         self.X = self.rng.uniform(self.lower, self.upper, size=(self.sn, self.d))
         self._evaluate_all()
         self._update_best_from_pop()
-
         history_best = np.empty(self.max_cycles, dtype=float)
+
         for t in range(self.max_cycles):
             self._employed_phase()
             self._onlooker_phase()
