@@ -38,8 +38,10 @@ limit: 20–200; nhỏ quá dễ “đốt” nguồn, lớn quá lãng phí vò
 max_cycles: đặt theo thời gian/độ chính xác mong muốn (vd. 100–1000+).
 ```
 
-## Ghi chú thực hành
-\item Greedy tăng tốc hội tụ nhưng có thể giảm đa dạng; Scout và ngẫu nhiên trong φ giúp tránh kẹt sớm.
-Mỗi lần cập nhật một chiều (đúng bản gốc). Biến thể có thể cập nhật nhiều chiều để tăng tốc (đánh đổi ổn định).
-Luôn xử lý biên sau khi tạo lân cận; chuẩn hóa xác suất roulette bằng cách cộng ε nhỏ để tránh chia 0.
+## Ghi chú
+
+- **Greedy** tăng tốc hội tụ nhưng có thể giảm đa dạng; **Scout** và ngẫu nhiên trong φ giúp tránh kẹt sớm.  
+- **Mỗi lần cập nhật một chiều** (đúng bản gốc). **Biến thể** có thể cập nhật nhiều chiều để tăng tốc (đánh đổi ổn định).  
+- **Luôn xử lý biên** sau khi tạo lân cận; **chuẩn hóa xác suất roulette** bằng cách cộng ε nhỏ để tránh chia 0.
+
 
