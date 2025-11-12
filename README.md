@@ -2,11 +2,12 @@
 
 ## Cấu trúc thư mục
 ```bash
-abc-base/
-├─ abc.py
-├─ run_demo.py 
-├─ README.md 
-└─ PSEUDOCODE.md 
+	3.1-solve-code/
+	├─ abc_base.py
+	├─ run_demo.py                  
+	├─ variants/
+	│  └─ abc_gbest.py             
+	└─ run_variant_gbest.py  
 ```
 
 ## Cách chạy nhanh
