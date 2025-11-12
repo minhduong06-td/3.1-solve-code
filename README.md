@@ -1,11 +1,13 @@
 # ABC (Artificial Bee Colony) 
 
 ## Cấu trúc thư mục
+```bash
 abc-base/
 ├─ abc.py
 ├─ run_demo.py 
 ├─ README.md 
 └─ PSEUDOCODE.md 
+```
 
 ## Cách chạy nhanh
 ```bash
